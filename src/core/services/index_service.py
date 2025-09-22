@@ -250,24 +250,3 @@ class FAISSIndexService:
 # TODO: (Improvments) Add Semantic Chunking to improve context quality inside every chunk
 # TODO: (Improvments) Add Full Text Seach and Hybrid Search
 # TODO: (Improvments) Experiment with different tokenizers & embedding models
-
-
-def main() -> None:
-    """Main function"""
-    config = Config()
-    faiss_service = FAISSIndexService(
-        config,
-        load_index=True,
-        save_index=False
-    )
-
-    logger.info(f"Number of chunks:{len(faiss_service.chunks)}")
-
-    results = faiss_service.semantic_search("– вдруге – у фазу початку викидання волотi 1,5 л/га.", top_k=3)
-    for result in results:
-        logger.info(f"Search result: {result['chunk_text']}")
-        logger.info(len(result['chunk_text']))
-
-
-if __name__ == "__main__":
-    main()

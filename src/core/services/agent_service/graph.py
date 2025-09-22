@@ -192,33 +192,3 @@ class AgentGraph:
         png_bytes = graph.get_graph().draw_mermaid_png()
         with open(self.config.graph_path, "wb") as f:
             f.write(png_bytes)
-
-
-def main() -> None:
-    """Main function"""
-    config = Config()
-
-    faiss_service = FAISSIndexService(
-        config,
-        load_index=True,
-        save_index=False
-    )
-
-    agent = AgentGraph(
-        top_k=3,
-        index_service=faiss_service,
-        config=config,
-        max_iterations=3
-    )
-
-    question="Як впливає розміщенні кукурудзи після цукрових буряків на почву?"
-
-    result = agent.invoke(question)
-
-    logger.info(f"Question: {question}")
-    logger.info(f"Answer: {result['answer']}")
-    logger.info(f"Number of iterations: {result['iterations']}")
-
-
-if __name__ == "__main__":
-    main()

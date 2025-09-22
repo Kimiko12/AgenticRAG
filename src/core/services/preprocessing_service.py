@@ -222,18 +222,3 @@ class PreprocessingService:
             logger.error(f"Failed to save file: {file_path}. Error: {e}")
 
 # TODO: (Improvments) Add Agentic cleaning into general pipeline
-
-
-def main() -> None:
-    """Main function."""
-    config = Config()
-    preprocessing_service = PreprocessingService(
-        data_path=config.data_path
-    )
-
-    documents = [doc['text'] for doc in preprocessing_service.cleaned_data]
-    print(len(documents))
-
-
-if __name__ == "__main__":
-    main()

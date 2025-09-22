@@ -53,23 +53,3 @@ def rag_tool(index_service: FAISSIndexService) -> BaseTool:
             return [{"error": str(e)}]
 
     return rag_semantic_search
-
-
-def main() -> None:
-    """Main function"""
-    config = Config()
-    faiss_service = FAISSIndexService(
-        config,
-        load_index=True,
-        save_index=False
-    )
-    logger.info(f"Number of chunks:{len(faiss_service.chunks)}")
-
-    input_query: str = "Як впливає розміщенні кукурудзи після цукрових буряків на почву?"
-    rag_tool_instance = rag_tool(faiss_service)
-
-    logger.info(rag_tool_instance.invoke(input={"index": faiss_service, "query": input_query, "top_k": 3}))
-
-
-if __name__ == "__main__":
-    main()
