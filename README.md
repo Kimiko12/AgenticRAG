@@ -9,22 +9,22 @@ The system combines **OpenAI's GPT-3.5-turbo** with an **efficient embedding and
 ## Key Features
 
 - **Agentic ReAct Graph**  
-  Iterative reasoning + retrieval that refines answers until the response satisfies the user’s query.
+  Leverages a reasoning + retrieval loop where the agent iteratively queries the knowledge base, gathers supporting evidence, and refines its response until it fully addresses the user’s question.
 
 - **LLM Backbone**  
-  OpenAI `gpt-3.5-turbo` via API for natural language generation.
+  Powered by OpenAI’s `gpt-3.5-turbo`, ensuring fluent, context-aware natural language generation with reliable performance for dialogue tasks.
 
 - **Embedding Model**  
-  `BAAI/bge-m3` (SOTA open-source embeddings with strong Ukrainian support).
+  Utilizes `BAAI/bge-m3`, a state-of-the-art multilingual embedding model with particularly strong performance for Ukrainian, enabling high-quality semantic similarity search.
 
 - **Tokenizer**  
-  `XLMRobertaTokenizer` for robust Ukrainian text handling.
+  Employs `XLMRobertaTokenizer`, a robust subword tokenizer designed for multilingual text, making it well-suited for processing complex Ukrainian morphology.
 
 - **Chunking**  
-  **Recursive Character Text Splitter** to preserve local context while splitting long documents.
+  **Recursive Character Text Splitter**, a widely adopted strategy that produces context-preserving text segments — an effective baseline for RAG pipelines.
 
 - **Indexing & Retrieval**  
-  **FAISS (HNSW)** for fast, semantically accurate nearest-neighbor search.
+  Uses **FAISS with HNSW indexing**, an optimized dense vector search method that balances speed, memory efficiency, and retrieval accuracy for large-scale knowledge bases.
 
 ---
 
